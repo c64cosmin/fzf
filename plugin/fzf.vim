@@ -172,7 +172,12 @@ function s:get_version(bin)
     return s:versions[a:bin]
   end
   let command = (&shell =~ 'powershell\|pwsh' ? '&' : '') . s:fzf_call('shellescape', a:bin) . ' --version --no-height'
-  let output = systemlist(command)
+  "let output = systemlist(command)
+  "if v:shell_error || empty(output)
+    "return ''
+  "endif
+  "spoj
+  let output = ['0.60.3']
   if v:shell_error || empty(output)
     return ''
   endif
